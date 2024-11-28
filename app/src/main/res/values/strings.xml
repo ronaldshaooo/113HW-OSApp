@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">BlackjackGameApp</string>
+    <!-- Pass-by Values-->
+    <string name="nameHint">Guest</string>
+    <string-array name="noOfDecksSpinner">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string name="remainingAmount">1000</string>
+    <string name="betAmount">$0</string>
+
+    <!-- Values in MainActivity and Splash-->
+    <string name="splashTitle">Blackjack by Jim</string>
+    <string name="welcomeMessage">Welcome to Blackjack! Enter your info to begin!</string>
+    <string name="nameMessage">Enter your name</string>
+    <string name="noOfDecksMessage">Number of Decks</string>
+    <string name="btnStart">START</string>
+    <string name="btnHelp">HOW TO PLAY</string>
+
+    <!-- Values in HowToPlay -->
+    <string name="helpTitle">How To Play</string>
+    <string name="step1">1. Select number of decks and bet amount</string>
+    <string name="step2">2. Get as close to 21 as possible without crossing (BUST)</string>
+    <string name="step3">3. HIT to draw card, STAY to let dealer draw</string>
+    <string name="howToWin">Winning Conditions</string>
+    <string name="cond1">1. Player Hits 21</string>
+    <string name="cond2">2. Player Hits 5 Cards and does not BUST</string>
+    <string name="cond3">3. Player Card Points > Dealer Card Points</string>
+    <string name="cond4">4. Dealer Busts</string>
+    <string name="btnHome">BACK TO START</string>
+
+    <!-- Values in SelectBetAmount -->
+    <string name="selectMessage">Select amount you would like to bet</string>
+    <string name="remainingAmountMessage">You have: $</string>
+    <string name="btnBet5">$5</string>
+    <string name="btnBet10">$10</string>
+    <string name="btnBet20">$20</string>
+    <string name="btnBet50">$50</string>
+    <string name="btnBetAll">ALL IN</string>
+    <string name="btnSubmitBet">START</string>
+    <string name="btnBack">RESTART</string>
+
+    <!-- Values in Gameover -->
+    <string name="gameOver">GAME OVER</string>
+    <string name="gameOverMessage">You went bankrupt! Better Luck Next Time :(</string>
+    <string name="gameOverImageDesc">Bankrupt</string>
+    <string name="btnGameOverAgain">Play Again</string>
+
+    <!-- Values in Gameplay -->
+    <string name="dealerName">Dealer</string>
+    <string name="dealerCount">0</string>
+    <string name="player">Player</string>
+    <string name="playerCount">0</string>
+    <string name="playerBetMessage">Bet: $</string>
+    <string name="playerBet">0</string>
+    <string name="btnHit">HIT</string>
+    <string name="btnStay">STAY</string>
+    <string name="cardsLeftMessage">Cards Left</string>
+    <string name="cardsLeft">0</string>
+
+    <string name="cardP1">Player Card 1</string>
+    <string name="cardP2">Player Card 2</string>
+    <string name="cardP3">Player Card 3</string>
+    <string name="cardP4">Player Card 4</string>
+    <string name="cardP5">Player Card 5</string>
+    <string name="cardD1">Dealer Card 1</string>
+    <string name="cardD2">Dealer Card 2</string>
+    <string name="cardD3">Dealer Card 3</string>
+    <string name="cardD4">Dealer Card 4</string>
+    <string name="cardD5">Dealer Card 5</string>
+
+    <!-- Values in Win/Lose/Draw -->
+    <string name="winTitle">You Win!</string>
+    <string name="loseTitle">You Lose…</string>
+    <string name="drawTitle">You Stalemated.</string>
+    <string name="winAmount">0</string>
+    <string name="loseAmount">0</string>
+    <string name="postAmount">0</string>
+    <string name="btnNewGame">Replay</string>
+
+</resources>
