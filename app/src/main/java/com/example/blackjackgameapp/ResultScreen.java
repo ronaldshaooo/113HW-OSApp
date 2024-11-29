@@ -34,7 +34,7 @@ public class ResultScreen extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);  // Enable the title display
-        getSupportActionBar().setTitle("Blackjack Game");   // Set the title
+        getSupportActionBar().setTitle("21點");   // Set the title
 
         // Get the Object and pass values
         PlayerRoundInformation round1 = (PlayerRoundInformation) getIntent().getSerializableExtra("roundInfo");
@@ -43,20 +43,20 @@ public class ResultScreen extends AppCompatActivity {
         TextView txtTitle = findViewById(R.id.txtTitle);
 
         if(round1.getDealerWin()){
-            txtTitle.setText("You Lose...");
+            txtTitle.setText("你輸了...");
         }
         else if(round1.getPlayerWin()){
-            txtTitle.setText("You Win");
+            txtTitle.setText("贏拉");
         }
         else if(round1.getDraw()){
-            txtTitle.setText("Draw");
+            txtTitle.setText("平手");
         }
 
 
         int betAmount = round1.getBetAmount();
-        betAmountTextView.setText("You bet: $" + betAmount);
+        betAmountTextView.setText("籌碼是: $" + betAmount +"塊錢");
         int remainingAmount = round1.getRemainingAmount();
-        remainingAmountTextView.setText("You have: $" + remainingAmount + " left");
+        remainingAmountTextView.setText("你口袋還有: $" + remainingAmount +"塊錢");
 
         Button btnNewGame = findViewById(R.id.btnNewGame);
         btnNewGame.setOnClickListener(v -> {

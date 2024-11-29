@@ -1,21 +1,17 @@
 <resources>
-    <string name="app_name">BlackjackGameApp</string>
+    <string name="app_name">21點</string>
     <!-- Pass-by Values-->
-    <string name="nameHint">Guest</string>
-    <string-array name="noOfDecksSpinner">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
+    <string name="nameHint">賭神</string>
+
 
     <string name="remainingAmount">1000</string>
     <string name="betAmount">$0</string>
 
     <!-- Values in MainActivity and Splash-->
-    <string name="splashTitle">Blackjack by Jim</string>
-    <string name="welcomeMessage">Welcome to Blackjack! Enter your info to begin!</string>
+    <string name="splashTitle">21點</string>
+    <string name="welcomeMessage">這是一個機率型投資理財遊戲. 投資理財有賺有賠開始前請詳閱教學!</string>
     <string name="nameMessage">輸入名字</string>
-    <string name="noOfDecksMessage">Number of Decks</string>
+    <string name="noOfDecksMessage">進入遊戲前請確認自己的年齡</string>
     <string name="btnStart">開始</string>
     <string name="btnHelp">教學</string>
 
@@ -49,9 +45,9 @@
     <string name="btnGameOverAgain">再來一次</string>
 
     <!-- Values in Gameplay -->
-    <string name="dealerName">莊家</string>
+    <string name="dealerName">莊家總和</string>
     <string name="dealerCount">0</string>
-    <string name="player">玩家</string>
+    <string name="player">玩家總和</string>
     <string name="playerCount">0</string>
     <string name="playerBetMessage">籌碼: $</string>
     <string name="playerBet">0</string>

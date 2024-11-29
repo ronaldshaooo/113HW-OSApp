@@ -19,7 +19,7 @@ public class SelectBetAmount extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);  // Enable the title display
-        getSupportActionBar().setTitle("Blackjack Game");   // Set the title
+        getSupportActionBar().setTitle("21點");   // Set the title
 
         // Get the Object and pass values
         PlayerRoundInformation round1 = (PlayerRoundInformation) getIntent().getSerializableExtra("roundInfo");
@@ -96,7 +96,7 @@ public class SelectBetAmount extends AppCompatActivity {
                 startActivity(selectBetAmount);
             }
             else{
-                String errorMessage = "You can't bet nothing :(";
+                String errorMessage = "請先選擇籌碼";
                 betAmountTextView.setText(errorMessage);
             }
         });

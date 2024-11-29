@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -12,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,22 +37,30 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);  // Enable the title display
-        getSupportActionBar().setTitle("Blackjack Game");   // Set the title
+        getSupportActionBar().setTitle("21點");   // Set the title
 
         final EditText nameEditText = findViewById(R.id.nameHint);
-        final Spinner noOfDecksSpinner = findViewById(R.id.noOfDecksSpinner);
         final Button btnStart = findViewById(R.id.btnStart);
         final Button btnHelp = findViewById(R.id.btnHelp);
+        final CheckBox oldsCheck = findViewById(R.id.oldscheckBox);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!oldsCheck.isChecked()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("請先確認年齡");
+                    builder.setMessage("未成年請離開");
+                    builder.create().show();
+                    return;
+                }
+
                 // Create Class to store information and pass around
                 PlayerRoundInformation round1 = new PlayerRoundInformation();
                 String name = nameEditText.getText().toString();
-                int noOfDecks = Integer.parseInt(noOfDecksSpinner.getSelectedItem().toString());
                 round1.setName(name);
-                round1.setNoOfDecks(noOfDecks);
+                round1.setNoOfDecks(1);
+
 
                 // Leads to set bet amount class
                 Intent selectBetAmount = new Intent(MainActivity.this, SelectBetAmount.class);
