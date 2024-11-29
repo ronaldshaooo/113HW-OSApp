@@ -2,6 +2,7 @@ package com.example.blackjackgameapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,7 +82,7 @@ public class Gameplay extends AppCompatActivity {
 
         TextView playerCountTextView = findViewById(R.id.playerCount);
         TextView dealerCountTextView = findViewById(R.id.dealerCount);
-
+        TextView dealerSpeakText = findViewById(R.id.dealerSpeakText);
         // Hit Button
         Button btnHit = findViewById(R.id.btnHit);
         btnHit.setOnClickListener(v -> {
@@ -148,6 +149,35 @@ public class Gameplay extends AppCompatActivity {
             }
             checkGameEnd(round1);
         });
+
+        String[] words = {"莊家：想好了沒", "莊家：還要不要", "莊家：是要想多久", "莊家：到底"};
+        Random rand=new Random();
+        Handler handler = new Handler();
+
+        //延遲1秒執行
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                int j=rand.nextInt(words.length);
+//                dealerSpeakText.setText(words[j]);
+//            }
+//        },3000);
+        boolean mStopHandler = false;
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // do your stuff - don't create a new runnable here!
+                if (!mStopHandler) {
+                    int j=rand.nextInt(words.length);
+                    dealerSpeakText.setText(words[j]);
+                    handler.postDelayed(this, 3000);
+                }
+            }
+        };
+
+        handler.post(runnable);
+
 
         // Game Start
         gameStarter(round1.getCardPool(), round1, cardsLeftTextView, imageCardP1, imageCardD2, imageCardP2, playerCountTextView, dealerCountTextView);
