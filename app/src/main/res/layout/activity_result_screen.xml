@@ -44,11 +44,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
+    <TextView
+        android:id="@+id/alertMessage"
+        android:layout_width="383dp"
+        android:layout_height="208dp"
+        android:text="@string/betAmount"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postBetAmount" />
+
     <Button
         android:id="@+id/btnNewGame"
         android:layout_width="217dp"
         android:layout_height="112dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="480dp"
         android:text="@string/btnNewGame"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"

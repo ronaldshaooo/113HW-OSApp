@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class ResultScreen extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
@@ -41,15 +43,32 @@ public class ResultScreen extends AppCompatActivity {
         TextView betAmountTextView = findViewById(R.id.postBetAmount);
         TextView remainingAmountTextView = findViewById(R.id.postAmount);
         TextView txtTitle = findViewById(R.id.txtTitle);
+        TextView alertMessageTextView = findViewById(R.id.alertMessage);
 
+        Random rand=new Random();
         if(round1.getDealerWin()){
             txtTitle.setText("你輸了...");
+            String[] words = {"賭博會讓你失去更多： 不只是金錢，還有時間、精力、甚至朋友和家人。",
+                    "賭博並不能解決問題： 如果你有經濟上的困難，賭博只會讓情況更糟。",
+                    "機率永遠站在賭場這邊： 每一場賭局，莊家的勝率都比你高，長久下來，你輸掉的機率遠大於贏。"};
+            int j=rand.nextInt(words.length);
+            alertMessageTextView.setText(words[j]);
         }
         else if(round1.getPlayerWin()){
             txtTitle.setText("贏拉");
+            String[] words = {"別被花俏的遊戲和廣告迷惑，賭場會用各種方式吸引你，但背後的目的只有一個，就是讓你輸錢。",
+                    "贏錢只是暫時的，輸錢卻是永久的，偶爾的贏錢只會讓你更想賭，但長期下來，你會輸掉更多。",
+                    "賭場永遠是贏家，不論遊戲多麼簡單，賭場的規則都是設計來讓他們長期獲利。"};
+            int j=rand.nextInt(words.length);
+            alertMessageTextView.setText(words[j]);
         }
         else if(round1.getDraw()){
             txtTitle.setText("平手");
+            String[] words = {"賭博就像個無底洞，你投入的越多，輸得就越多。",
+                    "賭場是專業的，你只是玩家，他們設計遊戲，就是為了讓你輸。",
+                    "別以為運氣會一直站在你這邊，莊家才是真正的贏家。"};
+            int j=rand.nextInt(words.length);
+            alertMessageTextView.setText(words[j]);
         }
 
 
