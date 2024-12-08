@@ -48,9 +48,9 @@ public class ResultScreen extends AppCompatActivity {
         Random rand=new Random();
         if(round1.getDealerWin()){
             txtTitle.setText("你輸了...");
-            String[] words = {"賭博會讓你失去更多： 不只是金錢，還有時間、精力、甚至朋友和家人。",
-                    "賭博並不能解決問題： 如果你有經濟上的困難，賭博只會讓情況更糟。",
-                    "機率永遠站在賭場這邊： 每一場賭局，莊家的勝率都比你高，長久下來，你輸掉的機率遠大於贏。"};
+            String[] words = {"賭博會讓你失去更多，不只是金錢，還有時間、精力、甚至朋友和家人。",
+                    "賭博並不能解決問題：，如果你有經濟上的困難，賭博只會讓情況更糟。",
+                    "機率永遠站在賭場這邊，每一場賭局，莊家的勝率都比你高，長久下來，你輸掉的機率遠大於贏。"};
             int j=rand.nextInt(words.length);
             alertMessageTextView.setText(words[j]);
         }
