@@ -8,6 +8,18 @@
     tools:context=".ResultScreen">
 
     <TextView
+        android:id="@+id/winningRate"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="@string/winAmount"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtTitle" />
+
+    <TextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,8 +35,8 @@
     <TextView
         android:id="@+id/postAmount"
         android:layout_width="383dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:text="@string/winAmount"
         android:textAlignment="center"
         android:textSize="35sp"
@@ -35,7 +47,7 @@
     <TextView
         android:id="@+id/postBetAmount"
         android:layout_width="383dp"
-        android:layout_height="208dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/betAmount"
         android:textAlignment="center"
@@ -47,7 +59,8 @@
     <TextView
         android:id="@+id/alertMessage"
         android:layout_width="383dp"
-        android:layout_height="208dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:text="@string/betAmount"
         android:textAlignment="center"
         android:textSize="20sp"

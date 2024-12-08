@@ -12,12 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
-public class ResultScreen extends AppCompatActivity {
 
+public class ResultScreen extends AppCompatActivity {
+    public static double winCount = 0;
+    public static double loseCount = 0;
+    public static double gameCount = 0;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,12 @@ public class ResultScreen extends AppCompatActivity {
         TextView remainingAmountTextView = findViewById(R.id.postAmount);
         TextView txtTitle = findViewById(R.id.txtTitle);
         TextView alertMessageTextView = findViewById(R.id.alertMessage);
+        TextView winningRateTextView = findViewById(R.id.winningRate);
 
         Random rand=new Random();
         if(round1.getDealerWin()){
+            gameCount++;
+            loseCount++;
             txtTitle.setText("你輸了...");
             String[] words = {"賭博會讓你失去更多，不只是金錢，還有時間、精力、甚至朋友和家人。",
                     "賭博並不能解決問題：，如果你有經濟上的困難，賭博只會讓情況更糟。",
@@ -55,6 +61,8 @@ public class ResultScreen extends AppCompatActivity {
             alertMessageTextView.setText(words[j]);
         }
         else if(round1.getPlayerWin()){
+            gameCount++;
+            winCount++;
             txtTitle.setText("贏拉");
             String[] words = {"別被花俏的遊戲和廣告迷惑，賭場會用各種方式吸引你，但背後的目的只有一個，就是讓你輸錢。",
                     "贏錢只是暫時的，輸錢卻是永久的，偶爾的贏錢只會讓你更想賭，但長期下來，你會輸掉更多。",
@@ -63,6 +71,7 @@ public class ResultScreen extends AppCompatActivity {
             alertMessageTextView.setText(words[j]);
         }
         else if(round1.getDraw()){
+            gameCount++;
             txtTitle.setText("平手");
             String[] words = {"賭博就像個無底洞，你投入的越多，輸得就越多。",
                     "賭場是專業的，你只是玩家，他們設計遊戲，就是為了讓你輸。",
@@ -70,7 +79,13 @@ public class ResultScreen extends AppCompatActivity {
             int j=rand.nextInt(words.length);
             alertMessageTextView.setText(words[j]);
         }
+        BigDecimal bd = new BigDecimal(winCount / gameCount);
+        BigDecimal roundOff = bd.setScale(2, RoundingMode.FLOOR);
 
+        //BigDecimal bd = new BigDecimal((winCount / gameCount)).setScale(2, RoundingMode.HALF_UP);
+        double winRate = roundOff.doubleValue() * 100;
+        //double winRate = (winCount / gameCount) * 100;
+        winningRateTextView.setText("此局勝率: "+winRate + "%");
 
         int betAmount = round1.getBetAmount();
         betAmountTextView.setText("籌碼是: $" + betAmount +"塊錢");
