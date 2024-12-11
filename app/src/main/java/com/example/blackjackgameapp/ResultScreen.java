@@ -85,7 +85,7 @@ public class ResultScreen extends AppCompatActivity {
         //BigDecimal bd = new BigDecimal((winCount / gameCount)).setScale(2, RoundingMode.HALF_UP);
         double winRate = roundOff.doubleValue() * 100;
         //double winRate = (winCount / gameCount) * 100;
-        winningRateTextView.setText("此局勝率: "+winRate + "%");
+        winningRateTextView.setText("目前勝率: "+winRate + "%");
 
         int betAmount = round1.getBetAmount();
         betAmountTextView.setText("籌碼是: $" + betAmount +"塊錢");

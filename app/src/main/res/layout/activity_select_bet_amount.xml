@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".SelectBetAmount">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="1200dp"
+        android:layout_height="wrap_content"
+        android:tint="#B3000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/activity_select_bet_amount" />
+
     <TextView
         android:id="@+id/welcomeMessage"
         android:layout_width="358dp"
