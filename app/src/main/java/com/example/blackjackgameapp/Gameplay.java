@@ -83,6 +83,7 @@ public class Gameplay extends AppCompatActivity {
         TextView playerCountTextView = findViewById(R.id.playerCount);
         TextView dealerCountTextView = findViewById(R.id.dealerCount);
         TextView dealerSpeakText = findViewById(R.id.dealerSpeakText);
+        TextView playerSpeakText = findViewById(R.id.playerSpeakText);
         // Hit Button
         Button btnHit = findViewById(R.id.btnHit);
         btnHit.setOnClickListener(v -> {
@@ -150,18 +151,12 @@ public class Gameplay extends AppCompatActivity {
             checkGameEnd(round1);
         });
 
-        String[] words = {"莊家：想好了沒", "莊家：還要不要", "莊家：是要想多久", "莊家：到底"};
+        String[] dealerwords = {"莊家：想好了沒", "莊家：還要不要", "莊家：是要想多久", "莊家：到底"};
+        String[] playerwords = {"玩家：還要跟不跟呢", "玩家：好猶豫", "玩家：要跟還是要縮", "玩家：身家都在上面了"};
         Random rand=new Random();
         Handler handler = new Handler();
+        Handler handler2 = new Handler();
 
-        //延遲1秒執行
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                int j=rand.nextInt(words.length);
-//                dealerSpeakText.setText(words[j]);
-//            }
-//        },3000);
         boolean mStopHandler = false;
 
         Runnable runnable = new Runnable() {
@@ -169,14 +164,26 @@ public class Gameplay extends AppCompatActivity {
             public void run() {
                 // do your stuff - don't create a new runnable here!
                 if (!mStopHandler) {
-                    int j=rand.nextInt(words.length);
-                    dealerSpeakText.setText(words[j]);
+                    int j=rand.nextInt(dealerwords.length);
+                    dealerSpeakText.setText(dealerwords[j]);
                     handler.postDelayed(this, 3000);
                 }
             }
         };
 
+        Runnable runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                // do your stuff - don't create a new runnable here!
+                if (!mStopHandler) {
+                    int j=rand.nextInt(playerwords.length);
+                    playerSpeakText.setText(playerwords[j]);
+                    handler.postDelayed(this, 3000);
+                }
+            }
+        };
         handler.post(runnable);
+        handler2.post(runnable2);
 
 
         // Game Start

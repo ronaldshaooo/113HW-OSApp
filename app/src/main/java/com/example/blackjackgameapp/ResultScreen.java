@@ -39,7 +39,7 @@ public class ResultScreen extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);  // Enable the title display
-        getSupportActionBar().setTitle("21點");   // Set the title
+        getSupportActionBar().setTitle("Ｏ in Strategy. 21點");   // Set the title
 
         // Get the Object and pass values
         PlayerRoundInformation round1 = (PlayerRoundInformation) getIntent().getSerializableExtra("roundInfo");

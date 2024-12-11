@@ -14,17 +14,37 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splashTitle"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:srcCompat="@drawable/wallpaper" />
 
-    <TextView
-        android:id="@+id/splashTitle"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="@string/splashTitle"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="@+id/splash"
-        app:layout_constraintStart_toStartOf="@+id/splash"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="-100dp"
+        android:layout_marginBottom="600dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/splashTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="@string/splashTitle"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/splashTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="72dp"
+            android:text="@string/splashTitle2"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

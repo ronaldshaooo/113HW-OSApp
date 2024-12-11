@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">21點</string>
+    <string name="app_name">Ｏ in Strategy. 21點</string>
     <!-- Pass-by Values-->
     <string name="nameHint">賭神</string>
 
@@ -8,7 +8,8 @@
     <string name="betAmount">$0</string>
 
     <!-- Values in MainActivity and Splash-->
-    <string name="splashTitle">21點</string>
+    <string name="splashTitle">Ｏ in Strategy</string>
+    <string name="splashTitle2">21點</string>
     <string name="welcomeMessage">這是一個機率型投資理財遊戲. 投資理財有賺有賠開始前請詳閱教學!</string>
     <string name="nameMessage">輸入名字</string>
     <string name="noOfDecksMessage">進入遊戲前請確認自己的年齡</string>
@@ -51,7 +52,7 @@
     <string name="playerCount">0</string>
     <string name="playerBetMessage">籌碼: $</string>
     <string name="playerBet">0</string>
-    <string name="btnHit">來</string>
+    <string name="btnHit">發牌</string>
     <string name="btnStay">停</string>
     <string name="cardsLeftMessage">剩餘牌數</string>
     <string name="cardsLeft">0</string>
