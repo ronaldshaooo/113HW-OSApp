@@ -84,6 +84,16 @@ public class Gameplay extends AppCompatActivity {
         TextView dealerCountTextView = findViewById(R.id.dealerCount);
         TextView dealerSpeakText = findViewById(R.id.dealerSpeakText);
         TextView playerSpeakText = findViewById(R.id.playerSpeakText);
+        ImageView dealerImage = findViewById(R.id.dealerImage);
+        ImageView playerImage = findViewById(R.id.playerImage);
+
+        //int drawableId = this.getResources().getIdentifier("dealer0", "drawable");
+        //dealerImage.setImageResource(drawableId);
+        dealerImage.setImageResource(R.drawable.dealer0);
+        playerImage.setImageResource(R.drawable.player0);
+        dealerSpeakText.setText("莊家：...");
+        playerSpeakText.setText("玩家：...");
+
         // Hit Button
         Button btnHit = findViewById(R.id.btnHit);
         btnHit.setOnClickListener(v -> {
@@ -162,11 +172,20 @@ public class Gameplay extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                // do your stuff - don't create a new runnable here!
                 if (!mStopHandler) {
                     int j=rand.nextInt(dealerwords.length);
                     dealerSpeakText.setText(dealerwords[j]);
                     handler.postDelayed(this, 3000);
+
+                    if(j==1){
+                        dealerImage.setImageResource(R.drawable.dealer1);
+                    }else if (j==2){
+                        dealerImage.setImageResource(R.drawable.dealer2);
+                    }else if (j==3){
+                        dealerImage.setImageResource(R.drawable.dealer3);
+                    }else{
+                        dealerImage.setImageResource(R.drawable.dealer0);
+                    }
                 }
             }
         };
@@ -174,16 +193,25 @@ public class Gameplay extends AppCompatActivity {
         Runnable runnable2 = new Runnable() {
             @Override
             public void run() {
-                // do your stuff - don't create a new runnable here!
                 if (!mStopHandler) {
                     int j=rand.nextInt(playerwords.length);
                     playerSpeakText.setText(playerwords[j]);
-                    handler.postDelayed(this, 3000);
+                    handler2.postDelayed(this, 4000);
+
+                    if(j==1){
+                        playerImage.setImageResource(R.drawable.player1);
+                    }else if (j==2){
+                        playerImage.setImageResource(R.drawable.player2);
+                    }else if (j==3){
+                        playerImage.setImageResource(R.drawable.player3);
+                    }else{
+                        playerImage.setImageResource(R.drawable.player0);
+                    }
                 }
             }
         };
-        handler.post(runnable);
-        handler2.post(runnable2);
+        handler.postDelayed(runnable, 3000);
+        handler2.postDelayed(runnable2, 2000);
 
 
         // Game Start
