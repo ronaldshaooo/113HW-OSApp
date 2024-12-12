@@ -7,20 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/welcomeMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="71dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/welcomeMessage"
-        android:textSize="20sp"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="1200dp"
+        android:layout_height="wrap_content"
+        android:tint="#33000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/activity_main" />
+
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:background="#CC000000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/welcomeMessage"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
 
     <TextView
         android:id="@+id/nameMessage"
@@ -31,6 +44,7 @@
         android:layout_marginEnd="30dp"
         android:text="@string/nameMessage"
         android:textSize="25sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +60,7 @@
         android:layout_marginEnd="30dp"
         android:text="@string/nameHint"
         android:textSize="25sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,26 +70,22 @@
     <TextView
         android:id="@+id/noOfDecksMessage"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="104dp"
+        android:background="#CC000000"
         android:text="@string/noOfDecksMessage"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nameHint"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnStart"
+        tools:layout_editor_absoluteX="52dp" />
 
     <Button
         android:id="@+id/btnStart"
         class="continue"
-        android:layout_width="203dp"
-        android:layout_height="93dp"
-        android:layout_marginStart="30dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="44dp"
         android:text="@string/btnStart"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,38 +96,27 @@
     <Button
         android:id="@+id/btnHelp"
         class="continue"
-        android:layout_width="203dp"
-        android:layout_height="93dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="30dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="44dp"
         android:text="@string/btnHelp"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnStart"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="185dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="@id/btnStart" />
 
     <CheckBox
         android:id="@+id/oldscheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="128dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:background="#CC000000"
         android:text="我已滿18歲"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noOfDecksMessage" />
+        android:textSize="18dp"
+        app:layout_constraintTop_toTopOf="@id/noOfDecksMessage"
+        tools:layout_editor_absoluteX="52dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
