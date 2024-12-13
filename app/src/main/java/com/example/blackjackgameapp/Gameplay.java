@@ -71,8 +71,8 @@ public class Gameplay extends AppCompatActivity {
         ImageView imageCardD4 = findViewById(R.id.cardD4);
         ImageView imageCardD5 = findViewById(R.id.cardD5);
 
-        TextView playerNameTextView = findViewById(R.id.playerName);
-        playerNameTextView.setText(String.valueOf(round1.getName()));
+        //TextView playerNameTextView = findViewById(R.id.playerName);
+        //playerNameTextView.setText(String.valueOf(round1.getName()));
 
         TextView betAmountTextView = findViewById(R.id.playerBet);
         betAmountTextView.setText(String.valueOf(round1.getBetAmount()));
