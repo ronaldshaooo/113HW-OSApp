@@ -20,6 +20,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Gameplay extends AppCompatActivity {
+    MediaPlayer allinMusic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -222,6 +224,12 @@ public class Gameplay extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        if(SelectBetAmount.isAllin == 1){
+            allinMusic = MediaPlayer.create(this, R.raw.allin_music);
+            allinMusic.start();
+
+        }
     }
 
     public static void randomizeCard(PlayerRoundInformation round1, ArrayList<String> cardPool, TextView cardsLeft, boolean isPlayer, int cardNumber) {
@@ -455,6 +463,15 @@ public class Gameplay extends AppCompatActivity {
             player.setText("21");
             round1.setPlayerWin(true);
             gameEnder(round1);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(allinMusic != null){
+            allinMusic.release();
         }
     }
 }

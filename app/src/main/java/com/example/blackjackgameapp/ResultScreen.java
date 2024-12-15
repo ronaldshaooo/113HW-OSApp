@@ -2,6 +2,7 @@ package com.example.blackjackgameapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import java.util.Random;
 
 
 public class ResultScreen extends AppCompatActivity {
+    MediaPlayer failedMusic;
+    MediaPlayer winMusic;
     public static double winCount = 0;
     public static double loseCount = 0;
     public static double gameCount = 0;
@@ -51,6 +54,9 @@ public class ResultScreen extends AppCompatActivity {
 
         Random rand=new Random();
         if(round1.getDealerWin()){
+            failedMusic = MediaPlayer.create(this, R.raw.failed);
+            failedMusic.start();
+
             gameCount++;
             loseCount++;
             txtTitle.setText("你輸了...");
@@ -61,6 +67,8 @@ public class ResultScreen extends AppCompatActivity {
             alertMessageTextView.setText(words[j]);
         }
         else if(round1.getPlayerWin()){
+            winMusic = MediaPlayer.create(this, R.raw.win);
+            winMusic.start();
             gameCount++;
             winCount++;
             txtTitle.setText("贏拉");
@@ -98,5 +106,18 @@ public class ResultScreen extends AppCompatActivity {
             selectBetAmount.putExtra("roundInfo", round1);
             startActivity(selectBetAmount);
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+//        if(failedMusic != null){
+//            failedMusic.release();
+//        }
+//
+//        if(winMusic != null){
+//            winMusic.release();
+//        }
     }
 }

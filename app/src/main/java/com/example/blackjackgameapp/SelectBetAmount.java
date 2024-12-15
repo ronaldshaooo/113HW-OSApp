@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectBetAmount extends AppCompatActivity {
 
+    public static int isAllin = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,7 @@ public class SelectBetAmount extends AppCompatActivity {
         btnBetAll.setOnClickListener(v -> {
             round1.setBetAmount(round1.getRemainingAmount());
             betAmountTextView.setText("$" + String.valueOf(round1.getBetAmount()));
+            isAllin = 1;
         });
 
         btnSubmitBet.setOnClickListener(v -> {
@@ -105,5 +107,11 @@ public class SelectBetAmount extends AppCompatActivity {
             Intent howToPlay = new Intent(SelectBetAmount.this, MainActivity.class);
             startActivity(howToPlay);
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isAllin = 0;
     }
 }
