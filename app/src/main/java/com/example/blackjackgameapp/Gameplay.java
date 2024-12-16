@@ -21,6 +21,11 @@ import java.util.TimerTask;
 
 public class Gameplay extends AppCompatActivity {
     MediaPlayer allinMusic;
+    Handler handler = new Handler();
+    Handler handler2 = new Handler();
+    Runnable runnable;
+    Runnable runnable2;
+    boolean mStopHandler = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +104,11 @@ public class Gameplay extends AppCompatActivity {
         // Hit Button
         Button btnHit = findViewById(R.id.btnHit);
         btnHit.setOnClickListener(v -> {
+            MediaPlayer speaker_hitMusic = MediaPlayer.create(this, R.raw.speaker_hit);
+            if(!speaker_hitMusic.isPlaying()){
+                speaker_hitMusic.start();
+            }
+
             if (round1.getPlayerCount() <= 21) {
                 if (round1.getHitCount() == 0) {
                     drawCard(round1.getCardPool(), round1, cardsLeftTextView, imageCardP3, true, 2, playerCountTextView, dealerCountTextView);
@@ -146,6 +156,10 @@ public class Gameplay extends AppCompatActivity {
         // Stay Button
         Button btnStay = findViewById(R.id.btnStay);
         btnStay.setOnClickListener(v -> {
+            MediaPlayer btn_stopMusic = MediaPlayer.create(this, R.raw.speaker_stop);
+            if(!btn_stopMusic.isPlaying()){
+                btn_stopMusic.start();
+            }
             // Dealer 1st card
             drawCard(round1.getCardPool(), round1, cardsLeftTextView, imageCardD1,false, 0, playerCountTextView, dealerCountTextView); // Cannot loop because imageview are unique
             if(round1.getDealerCount() < 17)
@@ -162,52 +176,82 @@ public class Gameplay extends AppCompatActivity {
             }
             checkGameEnd(round1);
         });
+        MediaPlayer speaker_dealer0 = MediaPlayer.create(this, R.raw.speaker_dealer_pending0);
+        MediaPlayer speaker_dealer1 = MediaPlayer.create(this, R.raw.speaker_dealer_pending1);
+        MediaPlayer speaker_dealer2 = MediaPlayer.create(this, R.raw.speaker_dealer_pending2);
+        MediaPlayer speaker_dealer3 = MediaPlayer.create(this, R.raw.speaker_dealer_pending3);
+
+        MediaPlayer speaker_player0 = MediaPlayer.create(this, R.raw.speaker_player_pending0);
+        MediaPlayer speaker_player1 = MediaPlayer.create(this, R.raw.speaker_player_pending1);
+        MediaPlayer speaker_player2 = MediaPlayer.create(this, R.raw.speaker_player_pending2);
+        MediaPlayer speaker_player3 = MediaPlayer.create(this, R.raw.speaker_player_pending3);
 
         String[] dealerwords = {"莊家：想好了沒", "莊家：還要不要", "莊家：是要想多久", "莊家：到底"};
-        String[] playerwords = {"玩家：還要跟不跟呢", "玩家：好猶豫", "玩家：要跟還是要縮", "玩家：身家都在上面了"};
+        String[] playerwords = {"玩家：哈哈哈送拉", "玩家：好猶豫", "玩家：要跟還是要縮", "玩家：身家都在上面了"};
         Random rand=new Random();
-        Handler handler = new Handler();
-        Handler handler2 = new Handler();
+        mStopHandler = false;
 
-        boolean mStopHandler = false;
 
-        Runnable runnable = new Runnable() {
+         runnable = new Runnable() {
             @Override
             public void run() {
                 if (!mStopHandler) {
                     int j=rand.nextInt(dealerwords.length);
                     dealerSpeakText.setText(dealerwords[j]);
-                    handler.postDelayed(this, 3000);
+                    handler.postDelayed(this, 5000);
 
                     if(j==1){
                         dealerImage.setImageResource(R.drawable.dealer1);
+                        if(allinMusic == null || !allinMusic.isPlaying()){
+                            speaker_dealer1.start();
+                        }
                     }else if (j==2){
                         dealerImage.setImageResource(R.drawable.dealer2);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_dealer2.start();
+                        }
                     }else if (j==3){
                         dealerImage.setImageResource(R.drawable.dealer3);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_dealer3.start();
+                        }
                     }else{
                         dealerImage.setImageResource(R.drawable.dealer0);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_dealer0.start();
+                        }
                     }
                 }
             }
         };
 
-        Runnable runnable2 = new Runnable() {
+         runnable2 = new Runnable() {
             @Override
             public void run() {
                 if (!mStopHandler) {
                     int j=rand.nextInt(playerwords.length);
                     playerSpeakText.setText(playerwords[j]);
-                    handler2.postDelayed(this, 4000);
-
+                    handler2.postDelayed(this, 9000);
                     if(j==1){
                         playerImage.setImageResource(R.drawable.player1);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_player1.start();
+                        }
                     }else if (j==2){
                         playerImage.setImageResource(R.drawable.player2);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_player2.start();
+                        }
                     }else if (j==3){
                         playerImage.setImageResource(R.drawable.player3);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_player3.start();
+                        }
                     }else{
                         playerImage.setImageResource(R.drawable.player0);
+                        if(allinMusic == null || !allinMusic.isPlaying()) {
+                            speaker_player0.start();
+                        }
                     }
                 }
             }
@@ -469,9 +513,11 @@ public class Gameplay extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
+        mStopHandler = true;
         if(allinMusic != null){
             allinMusic.release();
         }
+        handler.removeCallbacks(runnable);
+        handler2.removeCallbacks(runnable2);
     }
 }

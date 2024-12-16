@@ -79,6 +79,9 @@ public class ResultScreen extends AppCompatActivity {
             alertMessageTextView.setText(words[j]);
         }
         else if(round1.getDraw()){
+            MediaPlayer speaker_drewMusic = MediaPlayer.create(this, R.raw.speaker_drew);
+            speaker_drewMusic.start();
+
             gameCount++;
             txtTitle.setText("平手");
             String[] words = {"賭博就像個無底洞，你投入的越多，輸得就越多。",

@@ -1,6 +1,7 @@
 package com.example.blackjackgameapp;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class SelectBetAmount extends AppCompatActivity {
 
         // Initialize Values
         round1.setBetAmount(0);
+        final MediaPlayer btn_allinMusic = MediaPlayer.create(this, R.raw.speaker_allin);
 
         final TextView betAmountTextView = findViewById(R.id.betAmount);
         final Button btnBet5 = findViewById(R.id.btnBet5);
@@ -86,6 +88,10 @@ public class SelectBetAmount extends AppCompatActivity {
         });
 
         btnBetAll.setOnClickListener(v -> {
+            if(!btn_allinMusic.isPlaying()){
+                btn_allinMusic.start();
+            }
+
             round1.setBetAmount(round1.getRemainingAmount());
             betAmountTextView.setText("$" + String.valueOf(round1.getBetAmount()));
             isAllin = 1;
