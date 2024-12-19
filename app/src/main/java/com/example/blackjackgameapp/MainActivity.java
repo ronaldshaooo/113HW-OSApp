@@ -19,16 +19,16 @@ import android.content.DialogInterface;
 
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer welcomeMusic;
+//    MediaPlayer welcomeMusic;
     static boolean firstLoad = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (firstLoad) {
-            welcomeMusic = MediaPlayer.create(this, R.raw.speaker_welcome);
-            welcomeMusic.start();
-            firstLoad = false;
+//            welcomeMusic = MediaPlayer.create(this, R.raw.speaker_welcome);
+//            welcomeMusic.start();
+//            firstLoad = false;
         }
 
         EdgeToEdge.enable(this);
@@ -91,6 +91,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        welcomeMusic.release();
+//        welcomeMusic.release();
     }
 }

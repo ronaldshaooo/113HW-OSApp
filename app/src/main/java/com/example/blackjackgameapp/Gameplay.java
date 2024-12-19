@@ -26,13 +26,24 @@ public class Gameplay extends AppCompatActivity {
     Runnable runnable;
     Runnable runnable2;
     boolean mStopHandler = false;
+    MediaPlayer speaker_dealer0;
+    MediaPlayer speaker_dealer1;
+    MediaPlayer speaker_dealer2;
+    MediaPlayer speaker_dealer3;
+
+    MediaPlayer speaker_player0;
+    MediaPlayer speaker_player1;
+    MediaPlayer speaker_player2;
+    MediaPlayer speaker_player3;
+
+    boolean is_Retimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gameplay);
-
+        is_Retimer = false;
         // Get the Object and pass values
         PlayerRoundInformation round1 = (PlayerRoundInformation) getIntent().getSerializableExtra("roundInfo");
 
@@ -94,6 +105,17 @@ public class Gameplay extends AppCompatActivity {
         ImageView dealerImage = findViewById(R.id.dealerImage);
         ImageView playerImage = findViewById(R.id.playerImage);
 
+        speaker_dealer0 = MediaPlayer.create(this, R.raw.speaker_dealer_pending0);
+        speaker_dealer1 = MediaPlayer.create(this, R.raw.speaker_dealer_pending1);
+        speaker_dealer2 = MediaPlayer.create(this, R.raw.speaker_dealer_pending2);
+        speaker_dealer3 = MediaPlayer.create(this, R.raw.speaker_dealer_pending3);
+
+        speaker_player0 = MediaPlayer.create(this, R.raw.speaker_player_pending0);
+        speaker_player1 = MediaPlayer.create(this, R.raw.speaker_player_pending1);
+        speaker_player2 = MediaPlayer.create(this, R.raw.speaker_player_pending2);
+        speaker_player3 = MediaPlayer.create(this, R.raw.speaker_player_pending3);
+
+
         //int drawableId = this.getResources().getIdentifier("dealer0", "drawable");
         //dealerImage.setImageResource(drawableId);
         dealerImage.setImageResource(R.drawable.dealer0);
@@ -105,6 +127,9 @@ public class Gameplay extends AppCompatActivity {
         Button btnHit = findViewById(R.id.btnHit);
         btnHit.setOnClickListener(v -> {
             MediaPlayer speaker_hitMusic = MediaPlayer.create(this, R.raw.speaker_hit);
+            StopSpeaker();
+            is_Retimer = true;
+
             if(!speaker_hitMusic.isPlaying()){
                 speaker_hitMusic.start();
             }
@@ -160,6 +185,8 @@ public class Gameplay extends AppCompatActivity {
             if(!btn_stopMusic.isPlaying()){
                 btn_stopMusic.start();
             }
+            StopSpeaker();
+            is_Retimer = true;
             // Dealer 1st card
             drawCard(round1.getCardPool(), round1, cardsLeftTextView, imageCardD1,false, 0, playerCountTextView, dealerCountTextView); // Cannot loop because imageview are unique
             if(round1.getDealerCount() < 17)
@@ -176,18 +203,9 @@ public class Gameplay extends AppCompatActivity {
             }
             checkGameEnd(round1);
         });
-        MediaPlayer speaker_dealer0 = MediaPlayer.create(this, R.raw.speaker_dealer_pending0);
-        MediaPlayer speaker_dealer1 = MediaPlayer.create(this, R.raw.speaker_dealer_pending1);
-        MediaPlayer speaker_dealer2 = MediaPlayer.create(this, R.raw.speaker_dealer_pending2);
-        MediaPlayer speaker_dealer3 = MediaPlayer.create(this, R.raw.speaker_dealer_pending3);
 
-        MediaPlayer speaker_player0 = MediaPlayer.create(this, R.raw.speaker_player_pending0);
-        MediaPlayer speaker_player1 = MediaPlayer.create(this, R.raw.speaker_player_pending1);
-        MediaPlayer speaker_player2 = MediaPlayer.create(this, R.raw.speaker_player_pending2);
-        MediaPlayer speaker_player3 = MediaPlayer.create(this, R.raw.speaker_player_pending3);
-
-        String[] dealerwords = {"莊家：想好了沒", "莊家：還要不要", "莊家：是要想多久", "莊家：到底"};
-        String[] playerwords = {"玩家：哈哈哈送拉", "玩家：好猶豫", "玩家：要跟還是要縮", "玩家：身家都在上面了"};
+        String[] dealerwords = {"莊家：想好了嗎", "莊家：還要不要呢", "莊家：是要想多久", "莊家：到底要等多久"};
+        String[] playerwords = {"玩家：來個All In Strategy", "玩家：好猶豫", "玩家：還要不要跟呢", "玩家：身家都在上面了"};
         Random rand=new Random();
         mStopHandler = false;
 
@@ -199,6 +217,12 @@ public class Gameplay extends AppCompatActivity {
                     int j=rand.nextInt(dealerwords.length);
                     dealerSpeakText.setText(dealerwords[j]);
                     handler.postDelayed(this, 5000);
+
+                    if(is_Retimer) {
+                        is_Retimer = false;
+                        return;
+                    }
+
 
                     if(j==1){
                         dealerImage.setImageResource(R.drawable.dealer1);
@@ -232,6 +256,10 @@ public class Gameplay extends AppCompatActivity {
                     int j=rand.nextInt(playerwords.length);
                     playerSpeakText.setText(playerwords[j]);
                     handler2.postDelayed(this, 9000);
+                    if(is_Retimer) {
+                        is_Retimer = false;
+                        return;
+                    }
                     if(j==1){
                         playerImage.setImageResource(R.drawable.player1);
                         if(allinMusic == null || !allinMusic.isPlaying()) {
@@ -256,8 +284,8 @@ public class Gameplay extends AppCompatActivity {
                 }
             }
         };
-        handler.postDelayed(runnable, 3000);
-        handler2.postDelayed(runnable2, 2000);
+        handler.postDelayed(runnable, 2000);
+        handler2.postDelayed(runnable2, 4000);
 
 
         // Game Start
@@ -510,9 +538,38 @@ public class Gameplay extends AppCompatActivity {
         }
     }
 
+    private void StopSpeaker(){
+        if(speaker_dealer0.isPlaying()){
+            speaker_dealer0.stop();
+        }
+        if(speaker_dealer1.isPlaying()){
+            speaker_dealer1.stop();
+        }
+        if(speaker_dealer2.isPlaying()){
+            speaker_dealer2.stop();
+        }
+        if(speaker_dealer3.isPlaying()){
+            speaker_dealer3.stop();
+        }
+        if(speaker_player0.isPlaying()){
+            speaker_player0.stop();
+        }
+        if(speaker_player1.isPlaying()){
+            speaker_player1.stop();
+        }
+        if(speaker_player2.isPlaying()){
+            speaker_player2.stop();
+        }
+        if(speaker_player3.isPlaying()){
+            speaker_player3.stop();
+        }
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
+
+        StopSpeaker();
         mStopHandler = true;
         if(allinMusic != null){
             allinMusic.release();
